@@ -15,4 +15,17 @@ public class User
     public List<Subscriptions> Subscriptions { get; set; } = new();
     
     public List<SentNews> SentNews { get; set; } = new();
+
+
+    public void AddSubscription(string topic)
+    {
+        if (!Subscriptions.Any(x => x.Topic == topic))
+        {
+            Subscriptions.Add(new Subscriptions
+            {
+                Topic = topic,
+                UserId = this.Id
+            });
+        }
+    }
 }
