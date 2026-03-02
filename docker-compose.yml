@@ -1,0 +1,16 @@
+services:
+  newsbot-db:
+    image: postgres:16-alpine
+    container_name: newsbot-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=NewsBotDb
+    ports:
+      - "5435:5432"
+    volumes:
+      - newsbot-db-data:/var/lib/postgresql/data
+
+volumes:
+  newsbot-db-data:
