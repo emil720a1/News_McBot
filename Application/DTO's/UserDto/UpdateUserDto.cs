@@ -1,5 +1,5 @@
 namespace Application.DTO_s.UserDetailsDto;
 
 public record UpdateUserDto(
-    Guid UserId, 
+    long UserId, 
     string Username);

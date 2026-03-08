@@ -19,7 +19,7 @@ public class SentNewsRepository : ISentNewsRepository
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<bool> ExistsAsync(Guid userId, CancellationToken cancellationToken)
+    public async Task<bool> ExistsAsync(long userId, CancellationToken cancellationToken)
     {
         return await _dbContext.SentNews
             .AnyAsync(s => s.UserId == userId);

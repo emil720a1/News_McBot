@@ -2,9 +2,21 @@ namespace Domain.Entity;
 
 public class User
 {
-    public Guid Id { get; set; }
+
+    // EF Core
+    private User()
+    {
+        
+    }
     
-    public Guid TelegramId { get; set; }
+    
+    public User(long id, string username)
+    {
+        Username = username;
+        Id = id;
+    }
+    
+    public long Id { get; set; }
     
     public string Username { get; set; }
 

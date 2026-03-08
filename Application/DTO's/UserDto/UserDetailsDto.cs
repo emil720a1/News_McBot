@@ -1,3 +1,3 @@
 namespace Application.DTO_s.UserDetailsDto;
 
-public record UserDetailsDto(Guid Id, string Username, Guid TelegramId, DateTime CreatedAt);
+public record UserDetailsDto(long Id, string Username, Guid TelegramId, DateTime CreatedAt);

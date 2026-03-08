@@ -1,4 +1,7 @@
+using Application.NewsProviderService;
 using Application.Repositories;
+using Infrastructure.NewsProviderService;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +13,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, 
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(nameof(BotDbContext));
+        var connectionString = configuration.GetConnectionString("BotDbContext");
 
         if (string.IsNullOrEmpty(connectionString))
         {
@@ -22,11 +25,15 @@ public static class DependencyInjection
             options.UseNpgsql(connectionString);
         });
         
+        services.AddScoped<IUserRepository, UserRepository>();
+
+        services.AddHttpClient<INewsProviderService, NewsService>(client =>
+        {
+            client.DefaultRequestHeaders.Add("User-Agent", "NewsBot-App");
+        });
+        
         return services;
 
-        // services.AddScoped<ISentNewsRepository>();
-            
-            // return services;
     }
 
     

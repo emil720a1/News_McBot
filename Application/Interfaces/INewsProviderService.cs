@@ -7,7 +7,7 @@ public interface INewsProviderService
 {
     Task<Result<IEnumerable<NewsArticleDto>>> GetTopHeadlinesAsync(string country, CancellationToken cancellationToken);
     
-    Task<Result<IEnumerable<NewsArticleDto>>> GetNewsByCategoryAsync(string category, CancellationToken cancellationToken);
+    Task<Result<IEnumerable<NewsArticleDto>>> GetNewsByCategoryAsync(string category, string country, CancellationToken cancellationToken);
     
     Task<Result<IEnumerable<NewsArticleDto>>> SearchNewsAsync(string query, CancellationToken cancellationToken);
 }

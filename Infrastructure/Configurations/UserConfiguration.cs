@@ -18,10 +18,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasColumnName("username")
             .IsRequired();
         
-        builder.Property(x => x.TelegramId)
-            .HasColumnName("telegram_id")
-            .IsRequired();
-        
         builder.Property(a => a.CreatedAt)
             .HasColumnName("created_at")
             .IsRequired();

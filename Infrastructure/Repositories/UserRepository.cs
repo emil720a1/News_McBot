@@ -50,14 +50,15 @@ public class UserRepository : IUserRepository
         return await user;
     }
 
-    public async Task<User?> GetByTelegramIdAsync(Guid telegramId, CancellationToken cancellationToken)
+    public async Task<User?> GetByTelegramIdAsync(long telegramId, CancellationToken cancellationToken)
     {
-        var user = _dbContext.Users.FirstOrDefaultAsync(s => s.TelegramId == telegramId, cancellationToken);
+        var user = _dbContext.Users.FirstOrDefaultAsync(s => s.Username == telegramId.ToString(), cancellationToken);
 
         return await user;
     }
 
-    public async Task<User> GetAsync(Guid userId, CancellationToken cancellationToken)
+
+    public async Task<User> GetByIdAsync(long userId, CancellationToken cancellationToken)
     {
         var user = _dbContext.Users.FirstOrDefaultAsync(s => s.Id == userId, cancellationToken);
         return await user;

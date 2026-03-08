@@ -8,9 +8,9 @@ public interface ISubscriptionRepository
     
     Task RemoveAsync(Subscriptions subscription, CancellationToken cancellationToken);
     
-    Task<bool> IsSubscribedAsync(Guid userId, string topic, CancellationToken cancellationToken);
+    Task<bool> IsSubscribedAsync(long userId, string topic, CancellationToken cancellationToken);
     
-    Task<IEnumerable<Subscriptions>> GetByUserIdAsync (Guid userId, CancellationToken cancellationToken);
+    Task<IEnumerable<Subscriptions>> GetByUserIdAsync (long userId, CancellationToken cancellationToken);
     
-    Task<Subscriptions?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Subscriptions?> GetByIdAsync(long id, CancellationToken cancellationToken);
 }
